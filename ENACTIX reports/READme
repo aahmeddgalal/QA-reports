@@ -1,51 +1,61 @@
-**ALL OVER THE SITE**
-1- Build failure bug:
-page/dashboard/(logs NOT FOUND)
-	Temporarily commented out lines 21, 140 in (FrontEnd>src>routes>index.tsx)
-2- Auth Refresh
-	auth.service.ts:72 POST http://localhost:3000/api/auth/refresh 401 (Unauthorized)
-	The refresh token gives unauthorised 401- first found in chapters as a superadmin
+🚀 Enactix Project - Audit Report
+Tested by: Galileo :)
 
+Date: April 29, 2026
 
-**REGISTRATION PAGE**
-1- Date of birth is not required (thinks it is in Enactus)
-2- password:
-	1- no strength configuration
-	2- Maybe confirmatory password check is useful (confirm your password box)
+🌍 ALL OVER THE SITE
+1. Build failure bug:
+Location: page/dashboard/(logs NOT FOUND)
 
-**LOG IN**
-all good (Conflict 409, forbidden 403, unauthorised 401)
-But when clicked on ENACTIX while logged in the site takes the user to the very first page and shows zero difference - think it would be better to keep the {Name, role}
+Status: Temporarily commented out lines 21, 140 in (FrontEnd > src > routes > index.tsx) to allow the project to run.
 
-**AS A SUPERADMIN**
-1- Dashboard:
-	error[0]: Access to XMLHttpRequest at... blocked by CORS policy
-CORS in the backend while using Credentials ---> Real-time features are disabled (Refresh is needed)
+2. Auth Refresh
+Error: auth.service.ts:72 POST http://localhost:3000/api/auth/refresh 401 (Unauthorized)
 
-	error[1]: مكتبة Recharts بتطلع Error إن الطول والعرض -1 في صفحة الـ Overview.
+Note: The refresh token gives unauthorised 401 - first found in chapters as a superadmin.
 
-2- Chapters:
-example for the error: if we (the admins) decided to put NAYEL as menofia u, we can’t change it after that. also if we wrote something wrong in menofia teams declaration as Progect not Project we can’t edit it
+📝 REGISTRATION PAGE
+Date of birth: Not required (thinks it is essential in Enactus records).
 
-Real-time features are disabled so you won’t see any changes if for example changed or deleted the coordinator, you have to refresh 
+Password Configuration:
 
-3- All users:
-Super admins are the only ones who have “All Users” but in the same time can’t change or delete members
+No strength configuration (allows very weak passwords).
 
-4- Activity log: 
-You told me it’s not bad- browser reconnecting requests due to the CORS and Credentials conflict as the CORS allows all users and ports but the Credentials don’t
+Maybe confirmatory password check is useful (confirm your password box).
 
+🔐 LOG IN
+General: All good (Conflict 409, forbidden 403, unauthorised 401).
 
+Navigation Bug: When clicked on ENACTIX logo while logged in, the site takes the user to the very first page and shows zero difference - think it would be better to keep the {Name, role} visible or redirect to the dashboard.
 
+👑 AS A SUPERADMIN
+1. Dashboard:
+Error [0]: Access to XMLHttpRequest at... blocked by CORS policy.
 
-**AS A COORDINATOR**
-MyChapters page:
-the “Add chapter” button is there but the coordinator doesn’t have the permission from the backend (Forbidden 403)
+Cause: CORS in the backend while using Credentials.
 
+Impact: Real-time features are disabled (Manual Refresh is needed).
 
-**AS A PRESIDENT / MEMBER / HR MEMBER**
-The design was completely good but in every page there’s a FORBIDDEN 403 maybe it’s from the AWS APIs 
+Error [1]: مكتبة Recharts بتطلع Error إن الطول والعرض -1 في صفحة الـ Overview.
 
-**AS A HEAD / VICE HEAD**
-1- same as president in  FORBIDDEN 403
-2- first page is too empty just a Welcome message and nothing after
+2. Chapters:
+Data Integrity Issue: If the admins decided to put NAYEL as Menofia U, we can’t change it after that. Also, if we wrote something wrong in Menofia teams declaration as Progect instead of Project, we can’t edit it.
+
+Real-time: Features are disabled, so you won’t see any changes if for example changed or deleted the coordinator, you have to refresh.
+
+3. All users:
+Super admins are the only ones who have “All Users” but at the same time can’t change or delete members.
+
+4. Activity log:
+Browser reconnecting requests due to the CORS and Credentials conflict (The CORS allows all users and ports but the Credentials don’t).
+
+👨‍💼 AS A COORDINATOR
+MyChapters page: The “Add chapter” button is there but the coordinator doesn’t have the permission from the backend (Forbidden 403).
+
+🏛️ AS A PRESIDENT / MEMBER / HR MEMBER
+Status: The design was completely good but in every page there’s a FORBIDDEN 403. Maybe it’s from the AWS APIs.
+
+👤 AS A HEAD / VICE HEAD
+Same as president in FORBIDDEN 403.
+
+UI Issue: First page is too empty, just a "Welcome" message and nothing after.
